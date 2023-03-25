@@ -1,6 +1,7 @@
 import './App.css';
 import { useState } from 'react';
 import { ToDo } from './components/to-do';
+import { ToDo2 } from './components/to-do2';
 
 function App() {
 
@@ -36,6 +37,9 @@ function App() {
         </div>
         <div className='col'>
           <ToDo />
+        </div>
+        <div className='col'>
+          <ToDo2 />
         </div>
       </div>
     </div>
