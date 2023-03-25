@@ -1,10 +1,15 @@
 import './App.css';
 import { useState } from 'react';
+import { ToDo } from './components/to-do';
 
 function App() {
 
-  const [restaurantName, setRestaurantName] = useState("Lemon");
-  console.log(restaurantName);
+  const [restaurantName, setRestaurantName] = useState("");
+  const [greeting, setGreeting] = useState({ where: "There!", greet: "Hello World" });
+
+  const updateGreetings = () => {
+    setGreeting(prevState => { return { ...prevState, greet: `Hello ${restaurantName}` } });
+  }
 
   const updateName = () => {
     setRestaurantName("Little Lemon")
@@ -18,9 +23,21 @@ function App() {
 
   return (
     <div className="App">
-      <h1>{`Hello There ${restaurantName}!`}</h1>
-      <input type='text' value={restaurantName} onChange={handleChange} />
-      <button className='btn rounded -0 border' onClick={updateName}>Default</button>
+      <div className='row'>
+        <div className='col my-3'>
+          <h1>{`Hello There ${restaurantName}!`}</h1>
+          <input type='text' value={restaurantName} onChange={handleChange} />
+          <button className='btn rounded-0 border' onClick={updateName}>Default</button>
+        </div>
+        <hr />
+        <div className='col-12 my-3'>
+          <h1>{greeting.greet}</h1>
+          <button className='btn rounded-0 border' onClick={updateGreetings}>Update Greeting</button>
+        </div>
+        <div className='col'>
+          <ToDo />
+        </div>
+      </div>
     </div>
 
   );
